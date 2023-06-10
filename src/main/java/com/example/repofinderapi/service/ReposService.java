@@ -20,20 +20,20 @@ public class ReposService {
     private final String token;
 
     @Autowired
-    public ReposService(RestTemplate restTemplate, @Value("${baseurl}") String baseUrl,@Value("${token}") String token) {
+    public ReposService(RestTemplate restTemplate, @Value("${baseurl}") String baseUrl, @Value("${token}") String token) {
         this.restTemplate = restTemplate;
         this.baseUrl = baseUrl;
         this.token = token;
     }
 
-    public List<HashMap<String, Object>> getReposResponse(String username){
-        String url = baseUrl + "/users/"+username+"/repos";
+    public List<HashMap<String, Object>> getReposResponse(String username) {
+        String url = baseUrl + "/users/" + username + "/repos";
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Accept","application/vnd.github+json");
+        headers.add("Accept", "application/vnd.github+json");
         headers.add("Authorization",
-                "Bearer "+token);
+                "Bearer " + token);
         headers.add("X-GitHub-Api-Version", "2022-11-28");
-        return  convertResponseToListOfHashMaps(sendGetRequest(url,headers));
+        return convertResponseToListOfHashMaps(sendGetRequest(url, headers));
     }
 
 }

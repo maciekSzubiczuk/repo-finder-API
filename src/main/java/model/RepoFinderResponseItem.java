@@ -11,7 +11,7 @@ public class RepoFinderResponseItem {
     private String ownerLogin;
     private List<Branch> branches;
 
-    public RepoFinderResponseItem(){
+    public RepoFinderResponseItem() {
         this.branches = new ArrayList<>();
     }
 }

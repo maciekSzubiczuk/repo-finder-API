@@ -14,26 +14,23 @@ import static com.example.repofinderapi.util.ResponseUtil.convertResponseToListO
 
 @Service
 public class BranchesService {
-
-    private final RestTemplate restTemplate;
     private final String baseUrl;
     private final String token;
 
     @Autowired
-    public BranchesService(RestTemplate restTemplate, @Value("${baseurl}") String baseUrl, @Value("${token}") String token) {
-        this.restTemplate = restTemplate;
+    public BranchesService(@Value("${baseurl}") String baseUrl, @Value("${token}") String token) {
         this.baseUrl = baseUrl;
         this.token = token;
     }
 
-    public List<HashMap<String, Object>> getBranchesResponse(String username,String repository){
-        String url = baseUrl + "/repos/"+username+"/"+repository+"/branches";
+    public List<HashMap<String, Object>> getBranchesResponse(String username, String repository) {
+        String url = baseUrl + "/repos/" + username + "/" + repository + "/branches";
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Accept","application/vnd.github+json");
+        headers.add("Accept", "application/vnd.github+json");
         headers.add("Authorization",
-                "Bearer "+token);
+                "Bearer " + token);
         headers.add("X-GitHub-Api-Version", "2022-11-28");
-        return  convertResponseToListOfHashMaps(sendGetRequest(url,headers));
+        return convertResponseToListOfHashMaps(sendGetRequest(url, headers));
     }
 
 }

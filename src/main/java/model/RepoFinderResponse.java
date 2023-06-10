@@ -9,7 +9,7 @@ import java.util.List;
 public class RepoFinderResponse {
     List<RepoFinderResponseItem> repositories;
 
-    public RepoFinderResponse(){
+    public RepoFinderResponse() {
         this.repositories = new ArrayList<>();
     }
 }
