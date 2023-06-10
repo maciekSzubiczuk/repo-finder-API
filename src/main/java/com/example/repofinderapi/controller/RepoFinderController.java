@@ -16,7 +16,7 @@ import org.springframework.web.client.HttpClientErrorException;
 
 @RestController
 @RequestMapping("/repo-finder")
-public class RepoController {
+public class RepoFinderController {
 
     @Value("${error.message.XMLMediaType}")
     private String xmlHeaderErrorMessage;
@@ -30,10 +30,11 @@ public class RepoController {
     private String invalidMediaTypeErrorMessage;
     @Value("${error.code.invalidMediaType}")
     private int invalidMediaTypeErrorCode;
+
     private final RepoFinderService repoFinderService;
 
     @Autowired
-    RepoController(RepoFinderService repoFinderService) {
+    public RepoFinderController(RepoFinderService repoFinderService) {
         this.repoFinderService = repoFinderService;
     }
 
