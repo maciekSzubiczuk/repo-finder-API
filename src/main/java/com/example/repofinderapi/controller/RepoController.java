@@ -1,8 +1,13 @@
 package com.example.repofinderapi.controller;
 
 import com.example.repofinderapi.service.BranchesService;
+import com.example.repofinderapi.service.RepoFinderService;
 import com.example.repofinderapi.service.ReposService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import model.RepoFinderResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,25 +18,21 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
+@RequestMapping("/repo-finder")
 public class RepoController {
 
-    private final ReposService reposService;
-    private final BranchesService branchesService;
+    private final RepoFinderService repoFinderService;
 
     @Autowired
-    RepoController(ReposService reposService, BranchesService branchesService){
-        this.reposService = reposService;
-        this.branchesService = branchesService;
+    RepoController(RepoFinderService repoFinderService){
+        this.repoFinderService = repoFinderService;
     }
 
-    @GetMapping("/{username}")
-    public ResponseEntity<String> getUserRepos(@PathVariable String username) {
-        List<HashMap<String, Object>> reposResponse = reposService.getReposResponse(username);
-        List<HashMap<String, Object>> branchesResponse = branchesService.getBranchesResponse(username,"repo-finder-API");
-        System.out.println(reposResponse);
-        System.out.println();
-        System.out.println(branchesResponse);
-        return ResponseEntity.ok("Requested username: "+username);
+    @GetMapping(value="/{username}",produces=MediaType.APPLICATION_JSON_VALUE)
+    public String getUserRepos(@PathVariable String username) throws JsonProcessingException {
+        RepoFinderResponse response = repoFinderService.populateRepoFinderResponse(username);
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(response);
     }
 
 }
