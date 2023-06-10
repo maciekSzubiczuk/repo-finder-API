@@ -1,8 +1,8 @@
 package com.example.repofinderapi.service;
 
-import model.Branch;
-import model.RepoFinderResponse;
-import model.RepoFinderResponseItem;
+import com.example.repofinderapi.model.Branch;
+import com.example.repofinderapi.model.RepoFinderResponse;
+import com.example.repofinderapi.model.RepoFinderResponseItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

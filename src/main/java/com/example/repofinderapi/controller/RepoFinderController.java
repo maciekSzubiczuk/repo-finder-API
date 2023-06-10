@@ -4,7 +4,7 @@ import com.example.repofinderapi.error.ErrorResponse;
 import com.example.repofinderapi.service.RepoFinderService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.RepoFinderResponse;
+import com.example.repofinderapi.model.RepoFinderResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;

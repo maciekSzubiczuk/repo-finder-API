@@ -1,4 +1,4 @@
-package model;
+package com.example.repofinderapi.model;
 
 import lombok.Data;
 

@@ -3,7 +3,7 @@ package com.example.repofinderapi;
 import com.example.repofinderapi.service.BranchesService;
 import com.example.repofinderapi.service.RepoFinderService;
 import com.example.repofinderapi.service.ReposService;
-import model.RepoFinderResponse;
+import com.example.repofinderapi.model.RepoFinderResponse;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
